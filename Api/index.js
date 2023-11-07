@@ -1,10 +1,9 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const app_1 = __importDefault(require("./src/app"));
-const PORT = 3000;
-app_1.default.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`);
+const server = require('./src/app.js');
+const { conn } = require('./src/db.js');
+const PORT = 3001;
+// Syncing all the models at once.
+conn.sync({ force: true }).then(() => {
+  server.listen(PORT, () => {
+    console.log(`Server en http://localhost:${PORT}`); // eslint-disable-line no-console
+  });
 });
