@@ -25,8 +25,14 @@ routerRecipe.get("/:id", (req, res) =>{
     res.status(200).send("Soy el detalle del Recipe")
 })
 
-routerRecipe.post("/recipe", (req, res) =>{
-    res.status(200).send("Creo la receta")
+routerRecipe.post("/recipe", async(req, res) =>{
+    const { name, image, summary, healthScore, steps, diets} = req.body;
+    try{
+        const response = await controllers.createRecipe(name, image, summary, healthScore, steps, diets);
+        res.status(200).json(response)
+    }catch(error){
+        res.status(400).send(error.message)
+    }
 })
 
 module.exports = routerRecipe;

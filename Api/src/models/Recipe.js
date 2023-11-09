@@ -26,8 +26,7 @@ module.exports = (sequelize) => {
         allowNull: false
     },
     steps:{
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false
+        type: DataTypes.STRING
     },
   }, {
     timestamps: false,

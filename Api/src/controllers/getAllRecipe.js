@@ -23,11 +23,12 @@ const getAllRecipe = async()=>{
         image: recipe.image,
         summary: recipe.summary,
         healthScore: recipe.healthScore,
+        diets: recipe.diets,
         steps: recipe.analyzedInstructions[0].steps
     }))
     apiRecipe.push(modifiedApiRecipe)
     
-    return apiRecipe.concat(dbRecipe)
+    return dbRecipe.concat(apiRecipe)
 }
 
 module.exports = getAllRecipe;
