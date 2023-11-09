@@ -1,9 +1,9 @@
 require('dotenv').config();
 const axios = require('axios').default;
 const {Diets} = require("../db.js");
-const {API_KEY} = process.env;
+const {API_KEY, URL_API} = process.env;
 const cleanDiets = require("../utils/cleanDiets.js")
-const URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`;
+const URL = `${URL_API}=${API_KEY}&addRecipeInformation=true`;
 
 
 const allDiets = async ()=>{
