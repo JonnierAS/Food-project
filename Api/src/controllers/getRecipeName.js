@@ -22,7 +22,7 @@ const getRecipeName = async(name)=>{
         steps: recipe.analyzedInstructions
     }))
     const filterApiName = modifiedApiRecipe.filter(api => {
-        if(api.name.includes(name)){
+        if(api.name.toLowerCase().includes(name.toLowerCase())){
             return api.name
         }
     })
