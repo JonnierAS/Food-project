@@ -21,8 +21,16 @@ routerRecipe.get("/", async(req, res) =>{
     
 })
 
-routerRecipe.get("/:id", (req, res) =>{
-    res.status(200).send("Soy el detalle del Recipe")
+routerRecipe.get("/:id", async(req, res) =>{
+    const {id} = req.params;
+    try {
+        const response = await controllers.getRecipeDetail(id)
+        
+        res.status(200).json(response)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+
 })
 
 routerRecipe.post("/recipe", async(req, res) =>{
