@@ -19,7 +19,7 @@ routerRecipe.get("/", async(req, res) =>{
         }
     }
     
-})
+});
 
 routerRecipe.get("/:id", async(req, res) =>{
     const {id} = req.params;
@@ -31,7 +31,7 @@ routerRecipe.get("/:id", async(req, res) =>{
         res.status(400).send(error.message)
     }
 
-})
+});
 
 routerRecipe.post("/recipe", async(req, res) =>{
     const { name, image, summary, healthScore, steps, diets} = req.body;
@@ -41,6 +41,18 @@ routerRecipe.post("/recipe", async(req, res) =>{
     }catch(error){
         res.status(400).send(error.message)
     }
+});
+
+routerRecipe.put("/update", async(req, res)=>{
+    const {id, name, image, summary, healthScore, steps, diets} = req.body;
+    // const {id} = req.params;
+    try {
+        const response = await controllers.updateRecipe(id,name, image, summary, healthScore, steps, diets);
+        res.status(200).send(response)
+    } catch (error) {
+        res.status(404).send(error.message)
+    }
+    
 })
 
 module.exports = routerRecipe;
