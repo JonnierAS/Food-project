@@ -55,4 +55,14 @@ routerRecipe.put("/update", async(req, res)=>{
     
 })
 
+routerRecipe.delete("/delete", async(req, res)=> {
+    const {id} = req.body;
+    try {
+        const response = await controllers.deleteRecipe(id)
+        res.status(200).send(response)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+})
+
 module.exports = routerRecipe;
