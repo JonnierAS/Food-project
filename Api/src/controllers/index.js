@@ -4,6 +4,7 @@ const getAllRecipe = require("./getAllRecipe.js");
 const getRecipeDetail = require("./getRecipeDetail.js");
 const getRecipeName = require("./getRecipeName.js");
 const updateRecipe = require("./updateRecipe.js");
+const deleteRecipe = require("./deleteRecipe.js");
 
 module.exports = controllers = {
     createRecipe,
@@ -11,5 +12,6 @@ module.exports = controllers = {
     getAllRecipe,
     getRecipeDetail,
     getRecipeName,
-    updateRecipe
+    updateRecipe,
+    deleteRecipe
 }
